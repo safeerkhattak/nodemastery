@@ -1,4 +1,5 @@
 const express = require('express');
+const cluster = require('cluster')
 
 
 const app = express();
@@ -24,5 +25,7 @@ app.get('/blockReq', (req, res) => {
     delay(9000)
     return res.send("hello world")
 })
-
+if(cluster.isMaster){ //isMastered flag differeciate the master process from the worker process
+    
+}
 app.listen(3000)
